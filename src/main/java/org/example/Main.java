@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,10 +10,19 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.get("https://captainhook07.github.io/gradleproject/");
+        try {
+            driver.get("https://captainhook07.github.io/gradleproject/");
 
-        System.out.println("Title: " + driver.getTitle());
+            System.out.println("Title: " + driver.getTitle());
 
-        driver.quit();
+            String heading = driver.findElement(
+                    By.tagName("h1")
+            ).getText();
+
+            System.out.println("Heading: " + heading);
+
+        } finally {
+            driver.quit();
+        }
     }
 }
