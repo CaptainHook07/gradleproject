@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BeginnerHub</title>
+
+  <style>
+    /* ---------- BASIC RESET ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+      line-height: 1.6;
+      transition: 0.3s;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5b4bdb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #5b4bdb;
+    }
+
+    .theme-btn {
+      border: none;
+      background: #5b4bdb;
+      color: white;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+
+      background: linear-gradient(135deg, #eeeaff, #ffffff);
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 70px);
+      margin-bottom: 15px;
+      color: #29234d;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      background: #5b4bdb;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #4435b8;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 35px;
+      margin-bottom: 40px;
+    }
+
+    /* ---------- CARDS ---------- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card h3 {
+      color: #5b4bdb;
+      margin-bottom: 10px;
+    }
+
+    /* ---------- COUNTER ---------- */
+    .counter-box {
+      text-align: center;
+      background: #5b4bdb;
+      color: white;
+      padding: 50px 20px;
+      border-radius: 20px;
+    }
+
+    .counter {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-item {
+      margin-bottom: 12px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: none;
+      background: white;
+      padding: 20px;
+      text-align: left;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 20px;
+      color: #555;
+    }
+
+    .faq-answer.show {
+      display: block;
+    }
+
+    /* ---------- CONTACT ---------- */
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      background: #29234d;
+      color: white;
+      padding: 25px;
+    }
+
+    /* ---------- DARK MODE ---------- */
+    body.dark {
+      background: #15151c;
+      color: #eee;
+    }
+
+    body.dark nav,
+    body.dark .card,
+    body.dark .faq-item,
+    body.dark .faq-question,
+    body.dark form {
+      background: #22222c;
+      color: #eee;
+    }
+
+    body.dark .nav-links a,
+    body.dark .faq-answer {
+      color: #ddd;
+    }
+
+    body.dark .hero {
+      background: #1b1b25;
+    }
+
+    body.dark .hero h1 {
+      color: white;
+    }
+
+    body.dark .hero p {
+      color: #ccc;
+    }
+
+    body.dark input,
+    body.dark textarea {
+      background: #30303b;
+      color: white;
+      border-color: #555;
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 700px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">BeginnerHub</div>
+
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#learn">Learn</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <button class="theme-btn" onclick="toggleTheme()">
+    🌙 Theme
+  </button>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <h1>Learn. Build. Grow.</h1>
+
+    <p>
+      A simple interactive website designed for beginners
+      who want to start learning web development.
+    </p>
+
+    <a href="#learn" class="btn">
+      Start Learning
+    </a>
+
+  </div>
+</section>
+
+
+<!-- LEARNING SECTION -->
+<section id="learn">
+
+  <h2 class="section-title">What You Can Learn</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>HTML</h3>
+      <p>
+        Learn how to create the structure of a website
+        using simple HTML elements.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>CSS</h3>
+      <p>
+        Learn how to add colors, layouts, spacing,
+        animations and beautiful designs.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>JavaScript</h3>
+      <p>
+        Make your website interactive using buttons,
+        events, functions and dynamic content.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Projects</h3>
+      <p>
+        Practice your skills by building small projects
+        that work in a real browser.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INTERACTIVE COUNTER -->
+<section>
+
+  <div class="counter-box">
+
+    <h2>Practice Counter</h2>
+
+    <p>Click the button every time you finish a practice session.</p>
+
+    <div class="counter" id="counter">
+      0
+    </div>
+
+    <button class="btn" onclick="increaseCounter()">
+      + Practice
+    </button>
+
+    <button class="btn" onclick="resetCounter()">
+      Reset
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+  <h2 class="section-title">About BeginnerHub</h2>
+
+  <div class="card">
+
+    <p>
+      BeginnerHub is a simple example website created to
+      demonstrate how HTML, CSS and JavaScript can work
+      together.
+    </p>
+
+    <br>
+
+    <p>
+      Try clicking the buttons, changing the theme,
+      opening the FAQ questions and using the contact form.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+<section>
+
+  <h2 class="section-title">Frequently Asked Questions</h2>
+
+  <div class="faq">
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        What should I learn first?
+      </button>
+
+      <div class="faq-answer">
+        Start with basic HTML, then learn CSS and finally
+        JavaScript.
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Do I need expensive software?
+      </button>
+
+      <div class="faq-answer">
+        No. A browser and a simple code editor are enough
+        to start learning.
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Can beginners build websites?
+      </button>
+
+      <div class="faq-answer">
+        Yes. Start with small projects and gradually add
+        more features.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <h2 class="section-title">Contact Us</h2>
+
+  <form id="contactForm">
+
+    <input
+            type="text"
+            id="name"
+            placeholder="Your name"
+            required
+    />
+
+    <input
+            type="email"
+            id="email"
+            placeholder="Your email"
+            required
+    />
+
+    <textarea
+            id="message"
+            placeholder="Your message"
+            required
+    ></textarea>
+
+    <button class="btn" type="submit">
+      Send Message
+    </button>
+
+    <p id="formMessage"></p>
+
+  </form>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <p>
+    © 2026 BeginnerHub | Built with HTML, CSS & JavaScript
+  </p>
+
+</footer>
+
+
+<script>
+
+  // ---------- DARK MODE ----------
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+  }
+
+
+  // ---------- COUNTER ----------
+  let count = 0;
+
+  function increaseCounter() {
+    count++;
+    document.getElementById("counter").textContent = count;
+  }
+
+  function resetCounter() {
+    count = 0;
+    document.getElementById("counter").textContent = count;
+  }
+
+
+  // ---------- FAQ ----------
+  const questions = document.querySelectorAll(".faq-question");
+
+  questions.forEach(function(question) {
+
+    question.addEventListener("click", function() {
+
+      const answer = question.nextElementSibling;
+
+      answer.classList.toggle("show");
+
+    });
+
+  });
+
+
+  // ---------- CONTACT FORM ----------
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+
+    document.getElementById("formMessage").textContent =
+            "Thanks, " + name + "! Your message was submitted.";
+
+    form.reset();
+
+  });
+
+</script>
+
+</body>
+</html>
