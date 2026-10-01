@@ -9,7 +9,7 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.get("https://www.google.com");
+        driver.get("https://captainhook07.github.io/gradleproject/");
 
         System.out.println("Title: " + driver.getTitle());
 
