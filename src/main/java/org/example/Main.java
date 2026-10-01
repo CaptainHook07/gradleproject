@@ -1,28 +1,13 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-
-    public static void main(String[] args) {
-
-        WebDriver driver = new ChromeDriver();
-
-        try {
-            driver.get("https://captainhook07.github.io/gradleproject/");
-
-            System.out.println("Title: " + driver.getTitle());
-
-            String heading = driver.findElement(
-                    By.tagName("h1")
-            ).getText();
-
-            System.out.println("Heading: " + heading);
-
-        } finally {
-            driver.quit();
-        }
+    static void main() {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+        IO.println(String.format("Hello and welcome!"));
+        System.out.println("Dummy Project");
+        System.out.println("Finsihed");
     }
 }
